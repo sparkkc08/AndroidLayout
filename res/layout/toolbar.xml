@@ -6,12 +6,11 @@
     android:background="@android:color/transparent"
     android:orientation="vertical" >
 
-        <ImageButton
+        <Button
             android:id="@+id/toolbar_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/toolbar_btn"
-            android:src="@drawable/arrow" />
+            android:background="@drawable/toolbar_btn"/>
 
         <com.twotoasters.android.horizontalimagescroller.widget.HorizontalImageScroller
             android:id="@+id/small_avatar_scroller"

@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.androidlayout.R;
 import com.twotoasters.android.horizontalimagescroller.image.ImageToLoad;
@@ -15,11 +18,16 @@ import com.twotoasters.android.horizontalimagescroller.image.ImageToLoadDrawable
 import com.twotoasters.android.horizontalimagescroller.widget.HorizontalImageScroller;
 import com.twotoasters.android.horizontalimagescroller.widget.HorizontalImageScrollerAdapter;
 
-public class ToolbarFragment extends Fragment{
-    @Override
+public class ToolbarFragment extends Fragment implements OnClickListener{
+    Button btn_next;
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	Log.v("AndroidLayout", "start_of_toolbarfragment");
         View v = inflater.inflate(R.layout.toolbar, null);
+        
+        btn_next = (Button) v.findViewById(R.id.toolbar_btn);
+        btn_next.setOnClickListener(this);
+        
         
         ArrayList<ImageToLoad> images = new ArrayList<ImageToLoad>();
         //for (int i=0; i<1; i++) {
@@ -38,5 +46,11 @@ public class ToolbarFragment extends Fragment{
         scroller.setAdapter(adapter);
 
         return v;
+    }
+	
+    @Override
+    public void onClick(View v) {
+    	Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT/4).show();
+        Log.d("AndroidLayout", "click");
     }
 }

@@ -1,40 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/MainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-    
+
     <fragment
-        android:name="com.example.fragments.ToolbarFragment"
         android:id="@+id/toolbarfragment"
+        android:name="com.example.fragments.ToolbarFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        tools:layout="@layout/toolbar"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        tools:layout="@layout/toolbar" />
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/avatarfragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_top" >
+        android:layout_below="@id/toolbarfragment" >
 
-    </RelativeLayout>
+    </FrameLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/settingsfragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:layout_below="@id/avatarfragment"
+        android:alpha="0.3"
+        android:background="@drawable/set_background" >
 
-    </LinearLayout>
+    </FrameLayout>
 
-</LinearLayout>
+</RelativeLayout>

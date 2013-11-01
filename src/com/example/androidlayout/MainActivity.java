@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.fragments.AvatarFragment;
 import com.example.fragments.SettingsFragment;
@@ -31,30 +33,11 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
+    }   
     
 }
-
-
-
-
-
-
-		/*
-		Fragment toolbar = new ToolbarFragment();
-		Fragment avatar = new AvatarFragment();
-		Fragment settings = new SettingsFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.toolbar, toolbar);
-        fragmentTransaction.add(R.id.avatar, avatar);
-        fragmentTransaction.add(R.id.settings, settings);
-
-        fragmentTransaction.commit();
-        */

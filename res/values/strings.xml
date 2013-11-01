@@ -7,5 +7,17 @@
     
     <string name="some_girl_name">Girl Name</string>
     
+    <string name="notify">Notifications</string>
+    
+    <string name="terms">Terms</string>
+    
+    <string name="safety">Privacy &amp; Safety</string>
+    
+    <string name="support">Support</string>
+    
+    <string name="log_out">Log Out</string>
+    
+    <string name="avatar_descr">Big Avatar</string>
+    
 
 </resources>
