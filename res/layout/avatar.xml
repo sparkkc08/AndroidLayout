@@ -15,8 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:contentDescription="@string/avatar_descr"
-            android:src="@drawable/girl2" />
+            android:contentDescription="@string/avatar_descr" />
 
         <Button
             android:id="@+id/btn_avatar_add"

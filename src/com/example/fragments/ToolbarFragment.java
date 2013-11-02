@@ -50,7 +50,7 @@ public class ToolbarFragment extends Fragment implements OnClickListener{
 	
     @Override
     public void onClick(View v) {
-    	Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT/4).show();
+    	Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT).show();
         Log.d("AndroidLayout", "click");
     }
 }

@@ -55,10 +55,9 @@ public class SettingsFragment extends Fragment implements OnClickListener{
             transaction.replace(R.id.avatarfragment, settings_fragment);
             transaction.replace(R.id.settingsfragment, avatar_fragment);
             transaction.addToBackStack(null);
-            transaction.commit();
-
-            Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT/4).show();	
+            transaction.commit();	
     	}
+    	Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT).show();
         Log.d("AndroidLayout", "click");
     }
 }
