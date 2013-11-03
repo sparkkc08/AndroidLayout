@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2013 Maxim Mironyuk 
+ * https://github.com/sparkkc08/AndroidLayout
+ */
+
 package com.example.fragments;
 
 import android.graphics.Bitmap;
@@ -22,55 +27,54 @@ import android.widget.Toast;
 
 import com.example.androidlayout.R;
 
+/** Performs processing events of the avatar fragment. */
 public class AvatarFragment extends Fragment implements OnClickListener{
-    Button btn_call;
-    Button btn_add;
 	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, 
+    		Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.avatar, null);
         
-        ImageView iv= (ImageView)v.findViewById(R.id.big_avatar);
-        iv.setImageBitmap(getCroppedBitmap(R.drawable.girl2));
+        ImageView mImageView= (ImageView)v.findViewById(R.id.big_avatar);
+        mImageView.setImageBitmap(getCroppedBitmap(R.drawable.girl2));
         
-        btn_call = (Button) v.findViewById(R.id.btn_avatar_call);
-        btn_call.setOnClickListener(this);
+        Button mBtnCall = (Button) v.findViewById(R.id.btn_avatar_call);
+        mBtnCall.setOnClickListener(this);
         
-        btn_add = (Button) v.findViewById(R.id.btn_avatar_add);
-        btn_add.setOnClickListener(this);
+        Button mBtnAdd = (Button) v.findViewById(R.id.btn_avatar_add);
+        mBtnAdd.setOnClickListener(this);
         
         return v;
     }
 	
+	/** Returns circled Bitmap from different images in resources. */
 	public Bitmap getCroppedBitmap(int src_image) {
-		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), src_image);
+		Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), src_image);
 		
-	    Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
-	    Canvas canvas = new Canvas(output);
+	    Bitmap mOutputBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(),
+	    		Config.ARGB_8888);
+	    Canvas mCanvas = new Canvas(mOutputBitmap);
 
-	    final Paint paint = new Paint();
-	    final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+	    final Paint mPaint = new Paint();
+	    final Rect mRect = new Rect(0, 0, mBitmap.getWidth(), mBitmap.getHeight());
 
-	    paint.setAntiAlias(true);
-	    //canvas.drawARGB(0, 0, 0, 0);
-	    // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-	    canvas.drawCircle(bitmap.getWidth()/2, bitmap.getHeight()/2, bitmap.getWidth()/2, paint);
-	    	    
-	    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
-	    canvas.drawBitmap(bitmap, rect, rect, paint);
-	    //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
-	    //return _bmp;
-	    paint.setStrokeWidth(20);
-	    paint.setStyle(Paint.Style.STROKE);
-	    paint.setColor(Color.LTGRAY);
-	    canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2, bitmap.getWidth()/2, paint);
+	    mPaint.setAntiAlias(true);
+	    mCanvas.drawCircle(mBitmap.getWidth()/2, mBitmap.getHeight()/2, mBitmap.getWidth()/2, 
+	    		mPaint);	    	    
+	    mPaint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+	    mCanvas.drawBitmap(mBitmap, mRect, mRect, mPaint);
+	    mPaint.setStrokeWidth(20);
+	    mPaint.setStyle(Paint.Style.STROKE);
+	    mPaint.setColor(Color.LTGRAY);
+	    mCanvas.drawCircle(mBitmap.getWidth()/2, mBitmap.getHeight()/2, mBitmap.getWidth()/2, 
+	    		mPaint);
 	    
-	    return output;
+	    return mOutputBitmap;
 	}
 	
     @Override
     public void onClick(View v) {
-        Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT).show();	
+        Toast.makeText(this.getActivity(), "Button is clicked!", Toast.LENGTH_SHORT).show();
         Log.d("AndroidLayout", "click");
     }
 
