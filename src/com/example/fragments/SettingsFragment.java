@@ -24,7 +24,7 @@ public class SettingsFragment extends Fragment implements OnClickListener{
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 
     		Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.settings, null);
+        View v = inflater.inflate(R.layout.fragment_settings, null);
         
         Button mBtnNotify = (Button) v.findViewById(R.id.btn_notify);
         mBtnNotify.setOnClickListener(this);

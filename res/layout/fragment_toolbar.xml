@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarcontainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/toolbar_btn"
+            android:layout_width="@dimen/btn_toolbar_size"
+            android:layout_height="@dimen/btn_toolbar_size"
+            android:background="@drawable/btn_toolbar_selector" />
+
+        <com.twotoasters.android.horizontalimagescroller.widget.HorizontalImageScroller
+            android:id="@+id/small_avatar_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_avatar_size"
+            android:layout_marginLeft="@dimen/btn_toolbar_horizontal_margin"
+            android:layout_toRightOf="@id/toolbar_btn" />
+
+</RelativeLayout>

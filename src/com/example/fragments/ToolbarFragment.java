@@ -29,7 +29,7 @@ public class ToolbarFragment extends Fragment implements OnClickListener{
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 
     		Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.toolbar, null);
+        View v = inflater.inflate(R.layout.fragment_toolbar, null);
         
         Button mBtnNext = (Button) v.findViewById(R.id.toolbar_btn);
         mBtnNext.setOnClickListener(this);
@@ -37,11 +37,11 @@ public class ToolbarFragment extends Fragment implements OnClickListener{
         ArrayList<ImageToLoad> mImages = new ArrayList<ImageToLoad>();
 
         // TODO: Change this to use a loop.
-        mImages.add(new ImageToLoadDrawableResource(R.drawable.girl1));
-        mImages.add(new ImageToLoadDrawableResource(R.drawable.girl2));
-        mImages.add(new ImageToLoadDrawableResource(R.drawable.girl3));
-        mImages.add(new ImageToLoadDrawableResource(R.drawable.girl4));
-        mImages.add(new ImageToLoadDrawableResource(R.drawable.girl5));
+        mImages.add(new ImageToLoadDrawableResource(R.drawable.img_girl1));
+        mImages.add(new ImageToLoadDrawableResource(R.drawable.img_girl2));
+        mImages.add(new ImageToLoadDrawableResource(R.drawable.img_girl3));
+        mImages.add(new ImageToLoadDrawableResource(R.drawable.img_girl4));
+        mImages.add(new ImageToLoadDrawableResource(R.drawable.img_girl5));
 
         // set up the scroller with an adapter populated with the list of ImageToLoad objects
         HorizontalImageScroller mScroller = (HorizontalImageScroller) v.findViewById(

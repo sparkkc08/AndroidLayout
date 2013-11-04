@@ -23,6 +23,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
 import com.example.androidlayout.R;
@@ -33,10 +34,12 @@ public class AvatarFragment extends Fragment implements OnClickListener{
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 
     		Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.avatar, null);
+        View v = inflater.inflate(R.layout.fragment_avatar, null);
         
         ImageView mImageView= (ImageView)v.findViewById(R.id.big_avatar);
-        mImageView.setImageBitmap(getCroppedBitmap(R.drawable.girl2));
+        
+        mImageView.setImageBitmap(getCroppedBitmap(R.drawable.img_girl3));
+        mImageView.setScaleType(ScaleType.FIT_CENTER);
         
         Button mBtnCall = (Button) v.findViewById(R.id.btn_avatar_call);
         mBtnCall.setOnClickListener(this);
@@ -50,27 +53,28 @@ public class AvatarFragment extends Fragment implements OnClickListener{
 	/** Returns circled Bitmap from different images in resources. */
 	public Bitmap getCroppedBitmap(int src_image) {
 		Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), src_image);
-		
-	    Bitmap mOutputBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(),
-	    		Config.ARGB_8888);
+	    Bitmap mScaledBitmap = Bitmap.createScaledBitmap(mBitmap, mBitmap.getWidth()/2, 
+	    		mBitmap.getWidth()/2, false);
+
+	    Bitmap mOutputBitmap = Bitmap.createBitmap(mScaledBitmap.getWidth(), mScaledBitmap.getHeight(), Config.ARGB_8888);
 	    Canvas mCanvas = new Canvas(mOutputBitmap);
 
 	    final Paint mPaint = new Paint();
-	    final Rect mRect = new Rect(0, 0, mBitmap.getWidth(), mBitmap.getHeight());
+	    final Rect mRect = new Rect(0, 0, mScaledBitmap.getWidth(), mScaledBitmap.getHeight());
 
 	    mPaint.setAntiAlias(true);
-	    mCanvas.drawCircle(mBitmap.getWidth()/2, mBitmap.getHeight()/2, mBitmap.getWidth()/2, 
-	    		mPaint);	    	    
+	    mPaint.setFilterBitmap(true);
+	    mPaint.setDither(true);
+	    mCanvas.drawARGB(0, 0, 0, 0);
+	    mPaint.setColor(Color.parseColor("#BAB399"));
+	    mCanvas.drawCircle(mScaledBitmap.getWidth() / 2+3.7f, mScaledBitmap.getHeight() / 2+3.7f,
+	    		mScaledBitmap.getWidth() / 2+0.1f, mPaint);
 	    mPaint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
-	    mCanvas.drawBitmap(mBitmap, mRect, mRect, mPaint);
-	    mPaint.setStrokeWidth(20);
-	    mPaint.setStyle(Paint.Style.STROKE);
-	    mPaint.setColor(Color.LTGRAY);
-	    mCanvas.drawCircle(mBitmap.getWidth()/2, mBitmap.getHeight()/2, mBitmap.getWidth()/2, 
-	    		mPaint);
+	    mCanvas.drawBitmap(mScaledBitmap, mRect, mRect, mPaint);
 	    
 	    return mOutputBitmap;
 	}
+	
 	
     @Override
     public void onClick(View v) {
